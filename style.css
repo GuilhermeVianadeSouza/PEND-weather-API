@@ -5,18 +5,60 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sublinhado-js {
+    text-decoration: underline;
+}
+
 .cabecario {
     display: flex;
     background-color: #9FCCFA;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    stroke: #DBE4ED;
 }
 
 .cabecario img{
+    justify-content: flex-start;
     width: 14.94rem;
     height: 17.25rem;
+    align-items: flex-start;
+    margin: 20px;
 }
 
 .cabecario button{
-    width: 200px;
-    height: 300px;
+    width: 7.3125rem;
+    height: 2.625rem;
+    font-size: 1,5rem;
+}
+
+.cabecario i{
+    width: 1,5rem;
+    height: 1,5rem;
+    justify-content: flex-end;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    gap: 1,5rem;
+    align-items: center;
+    width: 2.5rem;
+}
+
+.nav a{
+    padding: 0 01rem;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1,5rem;
+    stroke: #DBE4ED;
+}
+
+.nav a:hover{
+    text-decoration: underline;
 }

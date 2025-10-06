@@ -10,6 +10,7 @@ function mostrarCabeçario(){ //Criando a primeira função de mostrar o cabeça
 
     function acessarPaginas(){ //Essa função dentro da principal de mostrar o cabeçario vai realizar a criação dos elementos textos que com links redirecionaram a outra página
         const navegacao = document.createElement('nav')
+        navegacao.classList.add('nav')
 
         const linkGeneral = document.createElement('a')
         linkGeneral.textContent = 'General Forecast'
@@ -37,6 +38,7 @@ function mostrarCabeçario(){ //Criando a primeira função de mostrar o cabeça
     logo.alt = 'logo'
 
     const botaoLogin = document.createElement('button')
+    botaoLogin.textContent = 'Login'
     botaoLogin.addEventListener('click', () => {
         alert('área em desenvolvimento')
     })
