@@ -1,25 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./app.js" type="module" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>GVS Studios</title>
 </head>
+    <title>GVS Studios</title>
+</head>
 <body>
-    <header class="cabecario" id="cabecario">
-        <i class="fa-solid fa-bell" id="notificacao"></i>
-        <i class="fa-solid fa-circle-user" id="usuario"></i>
-    </header>
-    <main class="principal" id="principal"></main>
-    <footer class="referencias" id="referencias">
-        <!-- //<i class="fa-brands fa-square-x-twitter" id="twitter"></i> 
-        //<i class="fa-brands fa-instagram" id="instagram"></i>
-        //<i class="fa-brands fa-facebook" id="facebook"></i> -->
-    </footer>
-</body>
+
+    <div class="app-container">
+
+        <header class="cabecario" id="cabecario">
+            <div class="top-bar">
+                <img src="./img/logo.png" alt="Logo Clima" class="logo">
+                <div class="icon-container">
+                    <i class="fas fa-bell" id="notificacao"></i>
+                    <div class="user-area">
+                        <i class="fas fa-user" id="usuario"></i>
+                        <button class="login-button">Login</button>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="nav">
+                <a href="./generalForecast.html">General Forecast</a>
+                <a href="./7daysforweek.html">7 Days for week</a>
+                <a href="./support.html">Support</a>
+            </nav>
+        </header>
+
+        <main class="content">
+            <h1>Climate</h1>
+            <p>Check your weather forecast here at GetSistemas</p>
+
+            <div class="forecast-box">
+                <div id="map"></div> 
+                <div class="info-text">
+                    <h2>São Paulo, Brazil</h2>
+                    <h3>Check the forecast for your city!</h3>
+                    <p>Contact GetSistemas for any questions this</p>
+                    <a href="#">See maps for your city!</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="social-media">
+                <p>Follow us on social media</p>
+                <div class="social-link">
+                    <i class="fab fa-twitter"></i>
+                    <div>
+                        <strong>Twitter</strong>
+                        <span>@get_sistemas</span>
+                    </div>
+                </div>
+                <div class="social-link">
+                    <i class="fab fa-facebook"></i>
+                    <div>
+                        <strong>Facebook</strong>
+                        <span>@get_sistemas.face</span>
+                    </div>
+                </div>
+                <div class="social-link">
+                    <i class="fab fa-instagram"></i>
+                    <div>
+                        <strong>Instagram</strong>
+                        <span>@get_sistemas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partners">
+                <p>In partnership with API</p>
+                </div>
+
+            <div class="manager">
+                <p><strong>Web site manager</strong></p>
+                <p>Developer:</p>
+                <p>Guilherme Viana de Souza</p>
+            </div>
+
+            <img src="./img/senai.png" alt="Logo SENAI" class="senai-logo">
+        </footer>
+
+    </div>
+    </div> <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    
+    <script src="app.js" defer></script> 
+
+    </body>
 </html>

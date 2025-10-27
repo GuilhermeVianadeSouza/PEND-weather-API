@@ -1,64 +1,336 @@
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
-body{
+/* --- 1. Configurações Globais e Fontes --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+/* Define o 'rem' para ser fluido (como tínhamos feito) */
+html {
+  font-size: clamp(14px, 4.5vw, 18px);
+}
+
+/* Reseta o box-sizing (MUITO IMPORTANTE) */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+    /* Usando a nova fonte importada */
+    font-family: 'Lato', Arial, sans-serif;
+    background-color: #f0f4f8; /* Fundo cinza claro para desktop */
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.app-container {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    /* Fundo azul claro principal do app */
+    background-color: #d1e9ff; 
+}
+
+/* --- 2. Cabeçalho (Header) - Válido para ambas as páginas --- */
+.cabecario {
+    padding: 1rem;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 7.5rem; /* 120px */
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; /* 20px */
+}
+
+.icon-container i {
+    font-size: 1.5rem; /* 24px */
+    color: #333;
+    cursor: pointer;
+}
+
+.user-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-button {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    padding: 0.125rem 0.5rem; /* 2px 8px */
+    font-size: 0.75rem; /* 12px */
+    cursor: pointer;
+    margin-top: 0.25rem; /* 5px */
+    font-weight: 700;
+}
+
+/* Navegação (Menu) */
+.nav {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #a6d5ff; /* Linha divisória mais escura */
+}
+.nav a {
+    text-decoration: none;
+    color: #003a75; /* Azul bem escuro */
+    font-weight: 700; /* Mais grosso (bold) */
+    font-size: 0.875rem; /* 14px */
+    padding: 0.25rem; 
+}
+
+/* Estilo "ativo" (sublinhado) para o link da página atual */
+.nav a.active {
+    border-bottom: 3px solid #003a75;
+}
+/* Para aplicar o estilo acima, adicione a classe 'active' no seu HTML:
+   - No 'index.html', adicione no link "General Forecast".
+   - No 'generalForecast.html', adicione no link "General Forecast".
+   Exemplo: <a href="./generalForecast.html" class="active">General Forecast</a>
+*/
+
+
+/* --- 3. Conteúdo Principal (Main) --- */
+.content {
+    padding: 0 1.25rem 1.25rem; /* 20px */
+    text-align: center;
+}
+
+.content h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900; /* Super grosso (black) */
+    font-size: 2.5rem; /* 40px */
+    color: #222;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+}
+
+/* Caixa do Mapa (Usada em ambas as páginas) */
+.forecast-box {
+    border: 1px solid #b0dfff;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-top: 1.25rem;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+#map {
+    height: 11.25rem; /* 180px */
+    width: 100%;
+    background-color: #eee;
+}
+
+/* --- 4. Estilos da Página Inicial (index.html) --- */
+.info-text {
+    padding: 1rem;
+}
+.info-text h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000;
+}
+.info-text h3 {
+    margin: 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 400; /* Peso normal */
+    color: #333;
+}
+.info-text p {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 0.5rem 0;
+}
+.info-text a {
+    color: #0056b3;
+    font-weight: 700;
+}
+
+
+/* --- 5. Estilos da Página General Forecast (generalForecast.html) --- */
+
+/* Formulário de Busca (CORRIGIDO) */
+.search-form {
+    display: grid;
+    /* Duas colunas: label (auto) e input (1fr = restante) */
+    grid-template-columns: auto 1fr; 
+    align-items: center; /* Alinha label e input verticalmente */
+    gap: 0.75rem 0.5rem; /* Espaço entre linhas | Espaço entre colunas */
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.search-form label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #003a75;
+}
+.search-form input {
+    border: 1px solid #ccc;
+    padding: 0.6rem;
+    border-radius: 4px;
+    width: 100%;
+}
+.search-form button {
+    /* Ocupa as 2 colunas */
+    grid-column: 1 / -1; 
+    background-color: #b0eaf1; /* Cor ciano da imagem */
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #003a75;
+    margin-top: 0.5rem;
+}
+
+/* Título da Página (General Forecast) */
+.page-title {
+    text-align: center;
+    font-size: 2rem; /* 32px */
+    font-weight: 900;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #333; /* Linha sólida da imagem */
+    padding-bottom: 0.5rem;
+}
+
+/* Título "General Information" */
+.content h2 {
+    text-align: center;
+    font-size: 1.5rem; /* 24px */
+    font-weight: 900;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Bloco de Informações (CORRIGIDO) */
+.info-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha no topo */
+    background-color: #fff;
+    border: 1px solid #b0dfff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.info-text-details {
+    flex-basis: 65%; /* Texto ocupa 65% */
+}
+.info-text-details p {
+    margin: 0.4rem 0;
+    font-size: 1rem; /* 16px */
+    font-weight: 400; /* Peso normal */
+    color: #333;
+}
+.info-text-details strong {
+    font-weight: 700; /* Bold */
+    color: #000;
+}
+/* Os valores (ex: 32C) */
+.info-text-details span {
+    color: #000;
+    font-weight: 700; /* Bold */
+}
+.separator {
+    border: 0;
+    /* Linha pontilhada (dotted) como na imagem */
+    border-top: 2px dotted #aaa; 
+    margin: 0.75rem 0;
+}
+
+.info-icon {
+    flex-basis: 30%; /* Ícone ocupa 30% */
+    text-align: center;
+    padding-top: 1rem; /* Dá um espaço para descer */
+}
+.info-icon img {
+    width: 100%;
+    max-width: 80px;
+}
+
+/* --- 6. Rodapé (Footer) - Válido para ambas as páginas --- */
+.footer {
+    padding: 1.25rem;
+    font-size: 0.875rem;
+    color: #333;
+    text-align: left;
+    border-top: 1px solid #a6d5ff;
+    margin-top: 2rem;
+}
+.social-media p,
+.partners p,
+.manager p {
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+.social-link i {
+    font-size: 1.875rem;
+    width: 1.875rem;
+    text-align: center;
+    color: #222; /* Ícones escuros como na imagem */
+}
+.social-link div {
     display: flex;
     flex-direction: column;
 }
-
-.sublinhado-js {
-    text-decoration: underline;
+.social-link span {
+    font-size: 0.875rem;
+    color: #333;
 }
 
-.cabecario {
-    display: flex;
-    background-color: #9FCCFA;
-    flex-wrap: nowrap;
-    stroke: #DBE4ED;
+.partners, .manager {
+    margin-top: 1.5rem;
+}
+.manager p {
+    margin-bottom: 0.25rem;
 }
 
-.cabecario img{
-    justify-content: flex-start;
-    width: 14.94rem;
-    height: 17.25rem;
-    align-items: flex-start;
-    margin: 20px;
+.senai-logo {
+    width: 9.375rem;
+    display: block;
+    margin: 1.5rem auto 0 auto;
 }
 
-.cabecario button{
-    width: 7.3125rem;
-    height: 2.625rem;
-    font-size: 1,5rem;
-}
 
-.cabecario i{
-    width: 1,5rem;
-    height: 1,5rem;
-    justify-content: flex-end;
-}
-
-.nav{
-    display: flex;
-    flex-direction: row;
-    gap: 1,5rem;
-    align-items: center;
-    width: 2.5rem;
-}
-
-.nav a{
-    padding: 0 01rem;
-    text-decoration: none;
-    color: #000000;
-    font-size: 1,5rem;
-    stroke: #DBE4ED;
-}
-
-.nav a:hover{
-    text-decoration: underline;
+/* --- 7. Responsividade (Desktop) --- */
+@media (min-width: 500px) {
+    body {
+        background-color: #f0f4f8; 
+        padding: 2rem 0; 
+    }
+    .app-container {
+        max-width: 450px;
+        margin: 0 auto; 
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
 }
